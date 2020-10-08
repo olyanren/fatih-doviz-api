@@ -3,7 +3,7 @@ const app = express()
 const port = 3000
 
 app.get('/', (req, res) => {
-  let values=require('./rest-api')
+  let values=require('./dynamodb-stream-api')
   values.handler()
 })
 app.listen(port, () => {
