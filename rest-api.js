@@ -19,7 +19,6 @@ exports.handler = async (event) => {
     }
   };
 
-
   const awsRequest = await db.scan(params);
   try {
     const result = await awsRequest.promise();

@@ -1,0 +1,25 @@
+{
+  "name": "fatih-doviz-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "amazon-dynamodb-express.js",
+  "dependencies": {
+    "aws-sdk": "^2.768.0",
+    "express": "^4.17.1"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/olyanren/fatih-doviz-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/olyanren/fatih-doviz-api/issues"
+  },
+  "homepage": "https://github.com/olyanren/fatih-doviz-api#readme"
+}
