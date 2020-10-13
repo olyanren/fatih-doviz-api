@@ -4,6 +4,7 @@
   "description": "",
   "main": "amazon-dynamodb-express.js",
   "dependencies": {
+    "@skavinvarnan/cryptlib": "^1.0.3",
     "aws-sdk": "^2.768.0",
     "express": "^4.17.1"
   },
