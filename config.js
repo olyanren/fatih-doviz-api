@@ -1,5 +1,6 @@
 module.exports = {
   aws_table_name: 'Currencies',
+  crawler_url: 'finanswebde.com',
   aws_local_config: {
     //Provide details for local configuration
   },
