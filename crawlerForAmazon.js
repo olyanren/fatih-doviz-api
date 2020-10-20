@@ -60,6 +60,8 @@ exports.handler  = function(event, context, callback) {
           let code = row.childNodes[0].querySelector('h3 a').childNodes[0].rawText
           let buying = row.childNodes[1].querySelector('span span').childNodes[0].rawText
           let selling = row.childNodes[2].querySelector('span span').childNodes[0].rawText
+          let smallest = row.childNodes[3].querySelector('span span').childNodes[0].rawText
+          let largest = row.childNodes[4].querySelector('span span').childNodes[0].rawText
           let difference = row.childNodes[5].querySelector('span span').childNodes[0].rawText
 
           const params = {
@@ -68,12 +70,14 @@ exports.handler  = function(event, context, callback) {
               "Code": code,
               "Type":typeForAmazon+'-'+count++
             },
-            UpdateExpression: "set Buying = :buying, Selling = :selling, Difference = :difference",
+            UpdateExpression: "set Buying = :buying, Selling = :selling, Difference = :difference, Smallest = :smallest, Largest = :largest",
 
             ExpressionAttributeValues: {
-              ":buying": buying.replace(",","."),
-              ":selling": selling.replace(",","."),
-              ":difference": difference.replace(",",".").replace('%',''),
+              ":buying": buying,
+              ":selling": selling,
+              ":difference": difference.replace('%',''),
+              ":smallest": smallest,
+              ":largest":largest
             }
           };
           docClient.update(params, function(err, data) {
