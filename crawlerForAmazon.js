@@ -30,6 +30,31 @@ exports.handler  = function(event, context, callback) {
       const root = parser.parse(data)
       let rows = root.querySelector('.portfolio tbody').childNodes;
       let count=1;
+      let typeForAmazon='CURRENCY';
+      switch (type) {
+        case 'doviz':
+          typeForAmazon = 'CURRENCY';
+          break;
+        case 'altin':
+          typeForAmazon = 'GOLD';
+          break;
+        case 'hisse-senedi':
+          typeForAmazon = 'EXCHANGE';
+          break;
+        case 'kripto-para':
+          typeForAmazon = 'COIN';
+          break;
+        case 'parite':
+          typeForAmazon = 'PARITIES';
+          break;
+        case 'emtia':
+          typeForAmazon = 'COMMODITIES';
+          break;
+        case 'endeks':
+          typeForAmazon = 'INDEXES';
+          break;
+      }
+
       rows.forEach(row => {
         if (row.childNodes.length === 7) {
           let code = row.childNodes[0].querySelector('h3 a').childNodes[0].rawText
@@ -41,7 +66,7 @@ exports.handler  = function(event, context, callback) {
             TableName: config.aws_table_name,
             Key: {
               "Code": code,
-              "Type":'CURRENCY-'+count++
+              "Type":typeForAmazon+'-'+count++
             },
             UpdateExpression: "set Buying = :buying, Selling = :selling, Difference = :difference",
 

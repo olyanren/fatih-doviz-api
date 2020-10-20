@@ -3,7 +3,7 @@ var https = require('https');
 
 var options = {
   host: 'finanswebde.com',
-  path: '/doviz',
+  path: '/hisse-senedi',
 }
 var request = https.request(options, function (res) {
   var data = '';
