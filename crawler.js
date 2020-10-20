@@ -3,7 +3,23 @@ var https = require('https');
 
 var options = {
   host: 'finanswebde.com',
-  path: '/hisse-senedi',
+  path: '/doviz',
+}
+function simpleStringify (object){
+  var simpleObject = {};
+  for (var prop in object ){
+    if (!object.hasOwnProperty(prop)){
+      continue;
+    }
+    if (typeof(object[prop]) == 'object'){
+      continue;
+    }
+    if (typeof(object[prop]) == 'function'){
+      continue;
+    }
+    simpleObject[prop] = object[prop];
+  }
+  return JSON.stringify(simpleObject); // returns cleaned up JSON
 }
 var request = https.request(options, function (res) {
   var data = '';
@@ -27,3 +43,4 @@ request.on('error', function (e) {
   console.log(e.message);
 });
 request.end();
+
