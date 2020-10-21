@@ -5,23 +5,9 @@ var options = {
   host: 'finanswebde.com',
   path: '/doviz',
 }
-function simpleStringify (object){
-  var simpleObject = {};
-  for (var prop in object ){
-    if (!object.hasOwnProperty(prop)){
-      continue;
-    }
-    if (typeof(object[prop]) == 'object'){
-      continue;
-    }
-    if (typeof(object[prop]) == 'function'){
-      continue;
-    }
-    simpleObject[prop] = object[prop];
-  }
-  return JSON.stringify(simpleObject); // returns cleaned up JSON
-}
+
 var request = https.request(options, function (res) {
+
   var data = '';
   res.on('data', function (chunk) {
     data += chunk;
